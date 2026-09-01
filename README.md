@@ -8,4 +8,4 @@ All code and data associated with Drosophila anatomograms.
 
 **scripts** contains the scripts used to map paper annotations to anatomogram terms, subset by cell type, and calculate various average expression, percent expression, and CPM counts.
 
-**processedData.zip** contains all files used by the anatomogram web tool. There is one CSV file for each anatomogram term that contains all genes and their expression metrics.
+**processedData** contains zips of all files used by the anatomogram web tool. There is one CSV file for each anatomogram term that contains all genes and their expression metrics.
