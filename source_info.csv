@@ -1,0 +1,17 @@
+﻿SVG,Paper,Data Source URL
+Dorsal Vessel,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Proventriculus,https://pubmed.ncbi.nlm.nih.gov/41593082/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301009
+Anterior Midgut,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Middle Midgut,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Posterior Midgut,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Midgut,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Malpighian Tubules,https://pubmed.ncbi.nlm.nih.gov/35696569/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE202575
+"Malpighian Tubules 2: WT, yki",https://pubmed.ncbi.nlm.nih.gov/38336808/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE251715
+"Malpighian Tubules 3: WT, Pvr RNAi, Pvr activation",https://pubmed.ncbi.nlm.nih.gov/38336808/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE251715
+Germarium,https://pubmed.ncbi.nlm.nih.gov/33159074/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE136162
+Male Reproduction Overview,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Testis,https://pubmed.ncbi.nlm.nih.gov/35239393/,https://www.flycellatlas.org/#data
+Full Body WT vs Yki,https://pubmed.ncbi.nlm.nih.gov/40275022/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE286259
+Trachea,https://pubmed.ncbi.nlm.nih.gov/38448482/,https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE240777
+,,
+"NOTE: For all FCA-sourced data, the whole-body  ""10x VSN All (Stringent)"" dataset was used and filtered down to just annotations relevant to each SVG",,
