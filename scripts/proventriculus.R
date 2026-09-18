@@ -20,30 +20,31 @@ yki_meta <- yki_meta %>% mutate(celltype = gsub('^[^[:alpha:]]+', '', celltype))
 ### First wt
 # Get names of cells in each cluster
 esophagus_cells <- wt_meta$cell[wt_meta$celltype == 'esophagus']
-muscle_cells <- wt_meta$cell[wt_meta$celltype == 'muscles']
-zone6_cells <- wt_meta$cell[wt_meta$celltype == 'zone6']
-zone56border_cells <- wt_meta$cell[wt_meta$celltype == 'zone5_6_border_cells']
-zone5_cells <- wt_meta$cell[wt_meta$celltype == 'zone5_dome']
-zone4_cells <- wt_meta$cell[wt_meta$celltype == 'zone4']
-zone23_cells <- wt_meta$cell[wt_meta$celltype == 'zone2_3']
 zone1_cells <- wt_meta$cell[wt_meta$celltype == 'zone1']
+zone23_cells <- wt_meta$cell[wt_meta$celltype == 'zone2_3']
+zone34_cells <- wt_meta$cell[wt_meta$celltype == 'zone3_4_border_Lgr1']
+zone4_cells <- wt_meta$cell[wt_meta$celltype == 'zone4']
+zone5_cells <- wt_meta$cell[wt_meta$celltype == 'zone5_dome']
+zone56border_cells <- wt_meta$cell[wt_meta$celltype == 'zone5_6_border_cells']
+zone6_cells <- wt_meta$cell[wt_meta$celltype == 'zone6']
+anterior_midgut_cells <- wt_meta$cell[wt_meta$celltype == 'anterior_midgut_1' | wt_meta$celltype == 'anterior_midgut_2']
 
-cells <- list(esophagus_cells, muscle_cells, zone6_cells, zone56border_cells,
-              zone5_cells, zone4_cells, zone23_cells, zone1_cells)
-names <- list('esophagus', 'muscles', 'zone6', 'zone56border', 
-              'zone5', 'zone4', 'zone23', 'zone1')
+cells <- list(esophagus_cells, anterior_midgut_cells, zone6_cells, zone56border_cells,
+              zone5_cells, zone4_cells, zone34_cells, zone23_cells, zone1_cells)
+names <- list('esophagus', 'anterior_midgut', 'zone6', 'zone56border', 
+              'zone5', 'zone4', 'zone34', 'zone23', 'zone1')
 mats <- list()
 
 # Make a subset for each cluster
 wt_mat <- wt_mat %>% tibble::rownames_to_column('geneID')
-for (i in 1:8) {
+for (i in 1:length(cells)) {
   sub_mat <- wt_mat[, cells[[i]]]
   rownames(sub_mat) <- wt_mat$geneID
   mats[[i]] <- sub_mat
 }
 
 dfs <- list()
-for (i in 1:8) {
+for (i in 1:length(cells)) {
   matrix <- mats[[i]]
   
   avg <- rowMeans(matrix) # average count
@@ -62,37 +63,38 @@ for (i in 1:8) {
 }
 
 # Save all to csv
-for (i in 1:8) {
+for (i in 1:length(cells)) {
   write.csv(dfs[[i]], paste0('results/proventriculus_p50/wt/', names[[i]], '.csv'), row.names = FALSE)
 }
 
 ### Now Yki
 # Get names of cells in each cluster
 esophagus_cells <- yki_meta$cell[yki_meta$celltype == 'esophagus']
-muscle_cells <- yki_meta$cell[yki_meta$celltype == 'muscles']
-zone6_cells <- yki_meta$cell[yki_meta$celltype == 'zone6']
-zone56border_cells <- yki_meta$cell[yki_meta$celltype == 'zone5_6_border_cells']
-zone5_cells <- yki_meta$cell[yki_meta$celltype == 'zone5_dome']
-zone4_cells <- yki_meta$cell[yki_meta$celltype == 'zone4']
-zone23_cells <- yki_meta$cell[yki_meta$celltype == 'zone2_3']
 zone1_cells <- yki_meta$cell[yki_meta$celltype == 'zone1']
+zone23_cells <- yki_meta$cell[yki_meta$celltype == 'zone2_3']
+zone34_cells <- yki_meta$cell[yki_meta$celltype == 'zone3_4_border_Lgr1']
+zone4_cells <- yki_meta$cell[yki_meta$celltype == 'zone4']
+zone5_cells <- yki_meta$cell[yki_meta$celltype == 'zone5_dome']
+zone56border_cells <- yki_meta$cell[yki_meta$celltype == 'zone5_6_border_cells']
+zone6_cells <- yki_meta$cell[yki_meta$celltype == 'zone6']
+anterior_midgut_cells <- yki_meta$cell[yki_meta$celltype == 'anterior_midgut_1' | yki_meta$celltype == 'anterior_midgut_2']
 
-cells <- list(esophagus_cells, muscle_cells, zone6_cells, zone56border_cells,
-              zone5_cells, zone4_cells, zone23_cells, zone1_cells)
-names <- list('esophagus', 'muscles', 'zone6', 'zone56border', 
-              'zone5', 'zone4', 'zone23', 'zone1')
+cells <- list(esophagus_cells, anterior_midgut_cells, zone6_cells, zone56border_cells,
+              zone5_cells, zone4_cells, zone34_cells, zone23_cells, zone1_cells)
+names <- list('esophagus', 'anterior_midgut', 'zone6', 'zone56border', 
+              'zone5', 'zone4', 'zone34', 'zone23', 'zone1')
 mats <- list()
 
 # Make a subset for each cluster
 yki_mat <- yki_mat %>% tibble::rownames_to_column('geneID')
-for (i in 1:8) {
+for (i in 1:length(cells)) {
   sub_mat <- yki_mat[, cells[[i]]]
   rownames(sub_mat) <- yki_mat$geneID
   mats[[i]] <- sub_mat
 }
 
 dfs <- list()
-for (i in 1:8) {
+for (i in 1:length(cells)) {
   matrix <- mats[[i]]
   
   avg <- rowMeans(matrix) # average count
@@ -111,6 +113,6 @@ for (i in 1:8) {
 }
 
 # Save all to csv
-for (i in 1:8) {
+for (i in 1:length(cells)) {
   write.csv(dfs[[i]], paste0('results/proventriculus_p50/yki/', names[[i]], '.csv'), row.names = FALSE)
 }
