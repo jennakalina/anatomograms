@@ -6,7 +6,7 @@ lfile
 
 #table(lfile$col.attrs$annotation[]) # Check different objects to make sure it's the right annotation
 
-clusters_keep <- c('adult heart', 'adult abdominal pericardial cell', 
+clusters_keep <- c('adult heart', 'adult abdominal pericardial cell', 'adult alary muscle',
                    'adult ostium', 'cardiomyocyte, working adult heart muscle (non-ostia)')
 
 # Get cells that belong to just these clusters
@@ -35,7 +35,7 @@ mats <- lapply(clusters_keep, function(clust){
 names(mats) <- clusters_keep
 
 dfs <- list()
-for (i in 1:4) {
+for (i in 1:length(clusters_keep) {
   matrix <- mats[[i]]
   
   avg <- rowMeans(matrix) # average count
@@ -54,8 +54,8 @@ for (i in 1:4) {
 }
 
 # Save all to csv
-names <- c('adult_heart', 'adult_apc', 'adult_ostium', 'cardiomyocyte')
-for (i in 1:4) {
+names <- c('adult_heart', 'adult_apc', 'adult_alary_muscle', 'adult_ostium', 'cardiomyocyte')
+for (i in 1:length(names) {
   write.csv(dfs[[i]], paste0('../../results/fca/heart/', names[[i]], '.csv'), row.names = FALSE)
 }
 
